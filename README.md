@@ -1,29 +1,24 @@
-# Mosslight Mail
+# Mosslight Mail — The Living Map
 
-A cozy click/tap arcade game about delivering magical mail and bringing a sleepy woodland village back to life. Built as a lightweight, single-page HTML5 game for desktop and mobile.
+A full-screen, storybook-fantasy map adventure. Explore the painted woodland world, visit its landmarks, sort enchanted letters, collect rare stamps, restore the village and meet the creatures who live there.
 
 ## Play
 
-Open `index.html` in a browser, or enable GitHub Pages for this repository and use the repository's Pages URL. Gameplay begins immediately; there is no title screen, account or sign-up.
+Open `index.html` in a browser, or enable GitHub Pages for this repository. The world map fills the screen immediately; there is no title screen or sign-up.
 
-1. Read the stamp on the current letter.
-2. Click/tap the matching mushroom, acorn or leaf chute (or click the letter to auto-deliver it).
-3. Build a streak for bonus acorns. A wrong chute only resets the streak; it does not remove earned progress.
-4. Spend acorns on mailroom upgrades and restore the noticeboard, Pip's cottage, the Mosslight lantern and the clock tower.
-5. Discover rare starlight letters and complete the stamp album.
+- **Explore:** click a landmark or drag the map to pan around the world. Locked places explain the delivery milestone needed to reach them.
+- **Deliver:** open the Mosslight Post Office and match each envelope's mushroom, acorn or leaf stamp to the correct chute.
+- **Grow:** spend acorns on the Swift Satchel, Enchanted Sorting Tray and Firefly Lantern.
+- **Restore:** repair the village noticeboard, Pip's cottage, the Mosslight lantern and the clock tower.
+- **Discover:** collect stamps, meet residents and complete small quests. Starlight letters can appear after eight successful deliveries.
+- **Keep progress:** your village autosaves to local storage in the same browser.
 
-## Included
+## Controls
 
-- Immediate, readable mail-sorting loop with a highlighted matching chute.
-- Bounce-in letter, chute feedback, chimes, reward toasts, combo streaks and acorn currency.
-- A responsive, illustrated woodland post office that visibly changes as village buildings are restored.
-- Three upgrade tracks, four restoration milestones, a first-delivery goal, a stamp collection and Pip the hedgehog.
-- Local autosave using `localStorage`; progress remains in the same browser.
-- Touch-friendly controls, reduced-motion support, sound toggle and in-game help.
-- Optional CrazyGames SDK v3 initialization and gameplay start/stop hooks. The game continues if the SDK is unavailable.
+Mouse/touch to activate landmarks and buttons. Drag the map to explore; arrow keys can also pan it. Press Escape to close a panel.
 
-## Development notes
+## Implementation
 
-The game is intentionally dependency-light: the playable build lives in `index.html`. Google Fonts and the optional CrazyGames SDK are loaded externally; the core game does not require them to load. To verify locally, serve this folder over HTTP (for example, `python -m http.server`) and open the local page. Browser storage can be cleared to start a fresh village.
+The game uses a painted map assembled from optimized WebP art tiles, with responsive clickable landmarks and illustrated parchment panels. The playable build lives in `index.html`; it uses the browser's local storage for saves and initializes the CrazyGames SDK v3 when available. The core loop continues if the platform SDK is unavailable.
 
-The design follows the attached *Crazygames Game Plan.pdf*: prove the sorting loop first, then layer upgrades, collection and visible restoration around it. The first ten minutes are a pacing target to playtest, not a guaranteed player outcome.
+See [TESTING.md](TESTING.md) for automated smoke coverage and release checks.
