@@ -222,9 +222,10 @@ export function restoreBuilding(state, buildingId) {
   state.restorations[buildingId] = true;
   state.acorns += building.reward;
   const location = LOCATIONS.find(l => l.id === building.location);
+  const resultMessage = building.name + " restored! +" + building.reward + " acorns";
   state.lastDelivery = {
     ok: true,
-    message: building.name + " restored! +" + building.reward + " acorns",
+    message: resultMessage,
     discovery: building.icon + " " + building.name + " is full of life again!",
     discoveryText: building.desc,
     reward: building.reward,
@@ -234,7 +235,7 @@ export function restoreBuilding(state, buildingId) {
     for (const resident of RESIDENTS) if (resident.unlockAt <= state.delivered) state.residentsMet[resident.id] = true;
   }
   checkDiscoveries(state);
-  return { ok: true, message: state.lastDelivery.message, building };
+  return { ok: true, message: resultMessage, building };
 }
 
 export function claimQuest(state, questId) {
