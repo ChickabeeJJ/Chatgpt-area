@@ -1,26 +1,24 @@
-# Mosslight Mail - QA notes
+# Mosslight Mail — map build QA
 
-## Automated smoke coverage
+## Checks for this update
 
-Validated against the current `feat/mosslight-mail` branch build:
-
-- JavaScript parses successfully.
-- All 42+ authored DOM IDs are unique, and every static `$('id')` reference points to an element in the page.
-- Exactly three sorting destinations are present: mushroom, acorn and leaf.
-- The wrong chute preserves the current letter and does not award a delivery.
-- Five correct deliveries finish the opening goal and refresh the acorn counter with the goal bonus.
-- The noticeboard and Pip's cottage restore in sequence; the village scene reflects both states.
-- A deterministic rare-mail run after delivery 12 keeps a valid regular destination, awards the starlight bonus and records the rare album stamp.
-- A 30-delivery run restored all four buildings, reached 100% restoration, opened the clock-tower milestone and persisted delivery/building/collection state to local storage.
-
-These are lightweight script/DOM simulation checks, not a substitute for hands-on browser or CrazyGames QA.
+- [x] Game starts directly in the fullscreen map with no title screen.
+- [x] Painted map art is used as the scene; CSS shapes are limited to interface elements and clickable markers.
+- [x] Mouse/touch landmark hotspots open location panels, and progress gates locked locations.
+- [x] Post Office panel sorts mushroom, acorn and leaf letters; incorrect choices keep the same letter and break the streak only.
+- [x] Deliveries award acorns and stamp progress, including rare starlight mail.
+- [x] Market upgrades, four village restorations, resident discovery, quests, stamp album and save migration are wired.
+- [x] JavaScript compiles successfully.
+- [x] No missing static DOM ID references or duplicate IDs in the main HTML.
 
 ## Manual release checklist
 
-- [ ] Play on desktop using mouse clicks.
-- [ ] Play on a narrow touchscreen and confirm all three chutes remain comfortable to tap.
-- [ ] Toggle sound on and off; verify sound failure never blocks a delivery.
-- [ ] Reload the same browser and confirm acorns, upgrades, buildings and collection persist.
-- [ ] Test with the CrazyGames SDK blocked or unavailable and confirm the core loop still works.
-- [ ] Confirm actual startup time and first-minute conversion in a real browser build before tuning progression.
-- [ ] Review the full restoration scene and all responsive breakpoints at normal browser zoom.
+- [ ] Play using mouse clicks in Chrome, Firefox and Safari.
+- [ ] Test touchscreen map dragging and each landmark on a narrow portrait viewport.
+- [ ] Confirm art tiles load over HTTP and the map does not show seams or blank areas at common aspect ratios.
+- [ ] Reload and verify saved progress and upgrades.
+- [ ] Test the core game with network access to the CrazyGames SDK blocked.
+- [ ] Verify the platform SDK behavior within CrazyGames before public release.
+- [ ] Check readability and hotspot placement at 100%, 125% and mobile zoom.
+
+Automated checks are script/DOM smoke tests; manual visual and device testing remain necessary before release.
